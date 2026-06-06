@@ -1,12 +1,11 @@
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 
-
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "vivent-client"
-version = "0.1.0"
+version = "0.1.2"
 description = "A client library for Vivent"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -20,4 +19,4 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/vivent-client"
+Homepage = "https://github.com/vivent-sarl/python-vivent-client"

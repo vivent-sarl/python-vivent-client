@@ -1,8 +1,17 @@
+"""
+Vivent Biosignals API client.
+
+Provides :class:`ViventClient`, a high-level wrapper around the Vivent
+public REST API, handling authentication, token refresh, and all
+resource endpoints.
+"""
+import requests
+import logging
 from typing import Optional, List, Literal
 
-import requests
+from .models import MetricData, TokenResponse, Channel
 
-from models import MetricData, TokenResponse, Channel
+logger = logging.getLogger(__name__)
 
 
 class ViventClient:
@@ -28,14 +37,14 @@ class ViventClient:
 
     def authenticate(self) -> TokenResponse:
         """Obtains a fresh access token using username/password credentials."""
-        print("[Auth] Requesting new access token...")
+        logger.debug("Requesting new access token.")
         response = requests.post(
             self.AUTH_URL,
             headers={"Authorization": f"Basic {self.auth_code}"},
             files={
                 "grant_type": (None, "password"),
-                "username":   (None, self.username),
-                "password":   (None, self.password),
+                "username": (None, self.username),
+                "password": (None, self.password),
             },
         )
         response.raise_for_status()
@@ -47,7 +56,7 @@ class ViventClient:
             refresh_expires_in=data["refresh_expires_in"],
             token_type=data["token_type"],
         )
-        print("[Auth] Access token obtained successfully.")
+        logger.debug("Access token obtained successfully.")
         return self._token
 
     def refresh_token(self) -> TokenResponse:
@@ -55,12 +64,12 @@ class ViventClient:
         if self._token is None:
             raise RuntimeError("No token available to refresh. Call authenticate() first.")
 
-        print("[Auth] Refreshing access token...")
+        logger.debug("Refreshing access token.")
         response = requests.post(
             self.AUTH_URL,
             headers={"Authorization": f"Basic {self.auth_code}"},
             files={
-                "grant_type":    (None, "refresh_token"),
+                "grant_type": (None, "refresh_token"),
                 "refresh_token": (None, self._token.refresh_token),
             },
         )
@@ -73,7 +82,7 @@ class ViventClient:
             refresh_expires_in=data["refresh_expires_in"],
             token_type=data["token_type"],
         )
-        print("[Auth] Token refreshed successfully.")
+        logger.debug("Access token refreshed successfully.")
         return self._token
 
     def get_valid_token(self) -> str:

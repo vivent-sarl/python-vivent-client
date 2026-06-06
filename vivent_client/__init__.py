@@ -1,2 +1,2 @@
-from .viven_client import ViventClient
+from .vivent_client import ViventClient
 from .models import *
