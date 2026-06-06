@@ -33,7 +33,7 @@ if __name__ == "__main__":
     print("\n=== Single Channel Metric (JSON) ===")
     metric_data = client.get_metric(
         metric="water-status-ssp",
-        source_id="25061775-1",
+        source_id="251775-1",
         start_ts="2024-01-31T14:00:00Z",
         stop_ts="2024-01-31T14:15:00Z",
         resolution="MINUTES_5",
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     print("\n=== Single Channel Metric (CSV) ===")
     raw_csv = client.get_metric_csv(
         metric="phosphorus-status-25q2",
-        source_id="25061775-1",
+        source_id="2561775-1",
         start_ts="2026-06-05T14:00:00Z",
         stop_ts="2026-06-06T14:15:00Z",
         resolution="MINUTES_5",
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     print("\n=== Aggregate Metric (JSON) ===")
     agg_data = client.get_aggregate_metric(
         metric="phosphorus-status-25q2",
-        source_ids=["25061775-1", "25061662-1"],
+        source_ids=["2561775-1", "2561662-1"],
         start_ts="2026-06-05T10:00:00Z",
         stop_ts="2026-06-05T06:15:00Z",
         resolution="MINUTES_5",
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     print("\n=== Aggregate Metric (CSV) ===")
     raw_agg_csv = client.get_aggregate_metric_csv(
         metric="phosphorus-status-25q2",
-        source_ids=["25061775-1", "25061662-1"],
+        source_ids=["2561775-1", "2561662-1"],
         start_ts="2026-06-04T14:00:00Z",
         stop_ts="2026-06-05T14:15:00Z",
         resolution="MINUTES_5",
