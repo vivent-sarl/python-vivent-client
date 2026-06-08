@@ -3,7 +3,7 @@ from typing import Optional, List, Literal
 
 import requests
 
-from vivent_client import Channel, MetricData, Page
+from .models import Channel, MetricData, Page
 
 
 class ResourceMixin(metaclass=ABCMeta):

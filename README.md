@@ -49,7 +49,7 @@ agg = client.get_aggregate_metric(
     function="MEAN",
 )
 ```
-See [`example.py`](example.py) for a full usage walkthrough.
+See [`example.py`](example.py) and [example_metadata.py](example_metadata.py) for a full usage walkthrough.
 
 ## Authentication
 

@@ -3,7 +3,7 @@ from typing import Optional
 
 import requests
 
-from vivent_client import TokenResponse
+from .models import TokenResponse
 
 logger = logging.getLogger(__name__)
 
