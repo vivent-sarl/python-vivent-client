@@ -40,12 +40,12 @@ if __name__ == "__main__":
 
     # 1. List available channels
     print("\n=== Available Channels ===")
-    channels = client.list_channels(
+    channels_page = client.list_channels(
         start_ts="2026-06-05T14:00:00Z",
         stop_ts="2026-06-06T15:00:00Z",
     )
-    print(f"Total channels: {len(channels)}")
-    for ch in channels:
+    print(f"Total channels: {channels_page.size}")
+    for ch in channels_page.data:
         print(f"  Channel: {ch.channel_id}  |  {ch.start_ts} → {ch.stop_ts or 'N/A'}")
 
     # 2. List available metrics
