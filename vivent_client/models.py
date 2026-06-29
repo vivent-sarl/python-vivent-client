@@ -82,7 +82,7 @@ class Group:
 @dataclass
 class Device:
     id: str
-    name: str
+    name: Optional[str]
     note: Optional[str]
     hardware_type: Optional[str]
     geo_location: Optional[str]

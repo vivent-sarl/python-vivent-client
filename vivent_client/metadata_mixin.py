@@ -209,7 +209,7 @@ class MetadataMixin(metaclass=ABCMeta):
     def _build_device(item: dict) -> Device:
         return Device(
             id=item["id"],
-            name=item["name"],
+            name=item.get("name"),
             note=item.get("note"),
             hardware_type=item.get("hardwareType"),
             geo_location=item.get("geoLocation"),
