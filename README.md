@@ -6,7 +6,7 @@ A Python client library for the [Vivent Biosignals](https://vivent-biosignals.co
 
 ## Requirements
 
-- Python >= 3.13
+- Python >= 3.9
 - `requests`
 
 ## Installation
